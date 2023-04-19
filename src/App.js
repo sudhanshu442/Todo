@@ -12,8 +12,11 @@ import Dialogmw from './components/MwDialog';
 import BH from './components/BH';
 import Todo from './components/Todo.jsx';
 import Tdo from './components/Tdo.jsx';
-
+import Footer from './components/Footer.jsx';
+import Mo from './components/Mo.js';
 // import "./styles/Todo.css";
+import './styles/Footer.css'
+import './styles/Mo.css'
 const App=()=>{
   return (
     <>
@@ -28,10 +31,12 @@ const App=()=>{
         <Route path="/bh" element={<BH/>}/>
         <Route path="/todo" element={<Todo/>}/>
         <Route path="/tdo" element={<Tdo/>}/>
+        <Route path="/mo" element={<Mo/>}/>
 
         
         
       </Routes>
+      {/* <Footer/> */}
     </Router>
     </>
   )

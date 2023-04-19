@@ -7,7 +7,8 @@ const styles={
     margin:'0',
     padding:'0',
     boxSizing:'border-box',
-
+    scrollBehavior: 'smooth',
+    fontFamily:'Roboto',
     app:{
         '&::-webkit-scrollbar': {
             display: 'none',
@@ -25,44 +26,64 @@ const styles={
         display: 'flex',
         alignItems:'center',
         justifyContent: 'center',
-    },
-    text:{
-        width:'100%',
-        flexGrow:'2',
-        flexDirection:'row',
-    },
-    todolist:{
+        left:'9px',
+  },
+  text: {
+    left: '10px',
+    right: '10px',
+    '@media screen and (min-width:375px)': {
+      
+        flex: '1 0 100%',
+        width: '100%',
+        flexDirection: "row",
+        margin: '0 0 12px 0',
+  },
+  },
+  todolist:{
         display: 'flex',
         flexDirection: 'row',
-        justifyContent: 'center',
+        justifyContent: 'space-around',
         alignItems:'center',
         position:'relative',
-
-
+        gap:'1rem',
     },
     last:{
         bottom:'0',
         color:'#fff',
-        position:'absolute'
+        position:'absolute',
+        left:'0',
+        right:'0',
+        '@media (min-width:500px)': {
+            flex: '1 0 100%',
+            width: '100%',
+            flexDirection:"row",
+            margin: '0 0 12px 0',
+      }
     },
-    tt:{
-        width:'100%',
+    tbt:{
+      width:"340px",
+        '@media (min-width:375px)': {
+          flex: '1 0 100%',
+          width: '100%',
+          flexDirection:"row",
+          margin: '0 0 12px 0',
+
+      },
     },
-}
+  }
+
 const Tdo = ({classes}) => {
   return (
     <>
     <Grid className={classes.app} spacing={{xs:2,md:3}} columns={{xs:4,sm:8,md:12}} style={{backgroundColor:'#1e223d'}}>
       <header >
-            <h1 className={classes.hdr}>TODO LIST</h1>
-            <br/>
+            <h1 className={classes.hdr}>TODO LIST</h1><br/>
         </header>
         <Grid item xs={12} xl={12} md={12} className={classes.todolist}>
           <List >
           <ListItem>
-            
-          <TextField  className={classes.num} placeholder="1" style={{marginRight: '15px',backgroundColor:'purple',borderRadius:'9px'}}/>
-          <TextField className={classes.text} type="text" style={{backgroundColor:'purple',borderRadius:'9px'}}
+             <TextField className={classes.num} placeholder="1" style={{ marginRight: '15px',backgroundColor:'purple',borderRadius:'9px'}} sx={{width:'60px'}}/>
+          <TextField className={classes.text} type="text" style={{backgroundColor:'purple',borderRadius:'9px'}} sx={{width:'280px'}}
       placeholder="Enter text"
       InputProps={{
         endAdornment: (
@@ -73,14 +94,12 @@ const Tdo = ({classes}) => {
           </InputAdornment>
         ),
       }} 
-    />    
-      {/* <div className="actions"> */}
-                {/* <button><DeleteIcon xs={8}/></button> */}
-      {/* </div> */}
+    /> 
+
     </ListItem>  
     <ListItem>
-          <TextField className={classes.num} placeholder="1" style={{ marginRight: '15px',backgroundColor:'purple',borderRadius:'9px'}}/>
-          <TextField  className={classes.text} style={{backgroundColor:'purple',borderRadius:'9px'}}
+          <TextField className={classes.num} placeholder="1" style={{ marginRight: '15px',backgroundColor:'purple',borderRadius:'9px'}} sx={{width:'60px'}}/>
+          <TextField  className={classes.text} style={{backgroundColor:'purple',borderRadius:'9px'}} sx={{width:'280px'}}
       type="text"
       placeholder="Enter text"
       InputProps={{
@@ -96,14 +115,14 @@ const Tdo = ({classes}) => {
    </ListItem>
     </List>
        </Grid>
-    <Grid item xs={12} xl={12} md={12} className={classes.last}>
+    <footer item xs={12} xl={12} md={12} className={classes.last}>
     <List>
         <ListItem>
-        <TextField className={classes.tt} placeholder="write" style={{backgroundColor:"purple",borderRadius:"9px"}}
+        <TextField className={classes.tbt} placeholder="write" style={{backgroundColor:"purple",borderRadius:"9px"}}
      InputProps={{
   endAdornment: (
     <InputAdornment position="end">
-      <IconButton aria-label="keyboardArrowUp" size="large" style={{color:"#fff"}}>
+      <IconButton aria-label="keyboardArrowUp" size="small" style={{backgroundColor:'#fff',color:"#000",borderRadius:'10px'}}>
         <KeyboardArrowUpIcon />
       </IconButton>
     </InputAdornment>
@@ -111,7 +130,7 @@ const Tdo = ({classes}) => {
 }} />
         </ListItem>
     </List>
-</Grid>      
+</footer>      
 </Grid>
 </>
   )
